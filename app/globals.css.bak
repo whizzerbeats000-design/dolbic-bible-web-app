@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Playfair Display', serif;
+  --font-sans: 'Inter', sans-serif;
+}
+
+body {
+  @apply bg-brand-charcoal text-brand-off-white antialiased pt-[72px];
+  font-family: var(--font-sans);
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+}
+
+/* ── Reduced Motion ────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── Shadow System — subtle architectural elevation ────────── */
+.shadow-ultralight {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+}
+.shadow-subtle {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+}
+.shadow-floating {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* ── Selective Glass Surfaces — museum-grade, not SaaS ────── */
+.glass {
+  background: rgba(245, 245, 240, 0.06);
+  border: 1px solid rgba(210, 180, 140, 0.12);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* ── Scrollbar — invisible but functional ──────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(184, 134, 11, 0.3);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(184, 134, 11, 0.5);
+}
+
+/* ── Focus-visible — clean keyboard focus ──────────────────── */
+:focus-visible {
+  outline: 2px solid var(--tw-shadow-color);
+  outline-offset: 2px;
+}
+
+/* ── Smooth anchor scrolling ───────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}

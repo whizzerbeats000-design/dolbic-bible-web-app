@@ -1,0 +1,42 @@
+# dependencies
+node_modules
+.next
+out
+dist
+
+# env
+.env
+.env.local
+.env.development.local
+.env.production.local
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# OS
+.DS_Store
+
+# Vercel
+.vercel
+
+# cache
+.cache
+.turbo
+
+# IDE
+.vscode
+.idea
+
+# keep public assets
+!public/**
+
+# ignore heavy dotfiles at root (but allow app)
+.*
+!.gitignore
+!next.config.js
+!tailwind.config.js
+!postcss.config.js
+!tsconfig.json

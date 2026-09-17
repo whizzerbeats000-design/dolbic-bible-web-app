@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─────────────────────────────────────────────────────────────
+   DOLBIC — Light Palette Spec
+   Navy #0B2E68 · White #FFFFFF · Warm Gray #F8FAFC · Slate #0F172A / #475569 / #94A3B8
+   Border #E2E8F0 · Shadow 0 4px 12px rgba(0,0,0,0.05) · Serif Georgia/Merriweather
+   ───────────────────────────────────────────────────────────── */
+
+:root {
+  --color-navy: #0B2E68;
+  --color-navy-hover: #0A2655;
+  --color-navy-light: #123A7A;
+  --color-gold: #C9A86A;
+  --color-surface: #FFFFFF;
+  --color-cream: #F8FAFC;
+  --color-bg: #FFFFFF;
+  --color-warm: #F8FAFC;
+  --color-border: #E2E8F0;
+  --color-border-strong: #CBD5E1;
+  --color-text: #0F172A;
+  --color-text-body: #475569;
+  --color-text-muted: #94A3B8;
+  --color-text-faint: #64748B;
+
+  /* Legacy aliases for existing components */
+  --color-primary: var(--color-navy);
+  --color-primary-hover: var(--color-navy-hover);
+  --color-secondary: var(--color-navy);
+  --color-deep: var(--color-navy);
+  --color-medium: var(--color-navy-light);
+  --color-flame: var(--color-navy);
+  --color-charcoal: var(--color-text);
+  --color-ivory: var(--color-bg);
+  --color-cream: var(--color-warm);
+
+  --bg-main: var(--color-bg);
+  --bg-surface: var(--color-card);
+  --bg-surface-raised: var(--color-card);
+  --bg-cream: var(--color-warm);
+  --bg-warm: var(--color-warm);
+  --bg-subtle: #F1F5F9;
+  --border: var(--color-border);
+  --border-strong: var(--color-border-strong);
+  --text-main: var(--color-text);
+  --text-secondary: var(--color-text-body);
+  --text-muted: var(--color-text-muted);
+  --text-on-brand: #FFFFFF;
+  --link: var(--color-navy);
+
+  --font-sans: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  --font-display: 'Inter', 'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-serif: 'Merriweather', Georgia, serif;
+  --font-mono: 'Inter', system-ui, sans-serif;
+
+  --text-display: 1.875rem;
+  --text-h2: 1.5rem;
+  --text-h3: 1.25rem;
+  --text-body: 1rem;
+  --text-sm: 0.875rem;
+  --text-xs: 0.75rem;
+  --text-scripture-size: 1.0625rem;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-pill: 9999px;
+
+  --shadow-card: 0px 4px 12px rgba(0, 0, 0, 0.05);
+  --shadow-soft: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-raise: 0 8px 24px rgba(11, 46, 104, 0.12);
+  --focus-ring: 0 0 0 3px rgba(11, 46, 104, 0.18);
+
+  --duration-fast: 150ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --page-pad-x: 16px;
+  --content-max: 720px;
+  --reader-max: 680px;
+  --nav-h-md: 64px;
+}
+
+/* Force light */
+@media (prefers-color-scheme: dark) {
+  :root { --bg-main: #FFFFFF; --bg-surface: #FFFFFF; --bg-warm: #F8FAFC; --border: #E2E8F0; --text-main: #0F172A; }
+}
+:root[data-theme='dark'], :root[data-theme='light'] { --bg-main: #FFFFFF; --bg-surface: #FFFFFF; --bg-warm: #F8FAFC; }
+
+* { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--font-sans); background: var(--bg-main); color: var(--text-main); min-height: 100vh; }
+h1, h2, h3 { font-family: var(--font-sans); font-weight: 700; color: var(--color-text); letter-spacing: -0.02em; line-height: 1.15; }
+h1 { font-size: var(--text-display); }
+p { color: var(--text-secondary); }
+a { color: var(--color-navy); text-decoration: none; }
+::selection { background: rgba(11,46,104,0.14); }
+
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--color-navy); outline-offset: 2px; box-shadow: var(--focus-ring); border-radius: 4px; }
+
+@layer components {
+  .page { width: 100%; max-width: var(--content-max); margin-inline: auto; padding-inline: var(--page-pad-x); }
+  .page-wide { width: 100%; max-width: 1120px; margin-inline: auto; padding-inline: var(--page-pad-x); }
+  .surface-card { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-card); }
+  .surface-warm { background: var(--bg-warm); border: 1px solid var(--border); border-radius: var(--radius-md); }
+  .scripture { font-family: var(--font-serif); font-size: var(--text-scripture-size); line-height: 1.75; color: var(--color-text); }
+  .eyebrow { font-family: var(--font-sans); font-size: 11px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--color-navy); }
+  .pill { border-radius: var(--radius-pill); }
+  .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  .hide-scrollbar::-webkit-scrollbar { display: none; }
+  .skeleton { background: #F1F5F9; border-radius: var(--radius-sm); position: relative; overflow: hidden; }
+  .skeleton::after { content: ''; position: absolute; inset: 0; transform: translateX(-100%); background: linear-gradient(90deg, transparent, rgba(255,255,255,0.6), transparent); animation: shimmer 1.6s infinite; }
+}
+
+@keyframes shimmer { 100% { transform: translateX(100%); } }
+.skip-link { position: fixed; top: -60px; left: 12px; z-index: 999; padding: 10px 16px; background: var(--color-navy); color: #fff; border-radius: 0 0 var(--radius-sm) var(--radius-sm); }
+.skip-link:focus-visible { top: 0; }
+body.focus-mode .site-header, body.focus-mode .bottom-nav { display: none; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+select.select-native { appearance: none; -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23475569' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E"); background-repeat: no-repeat; background-position: right 12px center; padding-right: 40px; }
+
+/* Light clean — no dark gradients */
+body::before, body::after { display: none; }
+.surface-elevated { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-md); box-shadow: var(--shadow-card); }
+.surface-floating { background: var(--bg-surface); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: var(--shadow-raise); }
+.section-rule { height: 1px; background: var(--border); }
