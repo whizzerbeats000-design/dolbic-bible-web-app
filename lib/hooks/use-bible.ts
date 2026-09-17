@@ -7,6 +7,17 @@ import type { ChapterContent } from '@/lib/data/types';
 
 const chapterCache = new Map<string, Promise<ChapterContent>>();
 const bookCachePromise = bibleRepository.listBooks();
+const LS_PREFIX = 'bible:chapter:';
+
+function getCachedChapter(key: string): ChapterContent | null {
+  try {
+    const raw = localStorage.getItem(LS_PREFIX + key);
+    return raw ? (JSON.parse(raw) as ChapterContent) : null;
+  } catch { return null; }
+}
+function setCachedChapter(key: string, data: ChapterContent) {
+  try { localStorage.setItem(LS_PREFIX + key, JSON.stringify(data)); } catch {}
+}
 
 export function useChapter(bookId: string, chapter: number, translation: TranslationSlug) {
   const [data, setData] = useState<ChapterContent | null>(null);
@@ -19,9 +30,12 @@ export function useChapter(bookId: string, chapter: number, translation: Transla
     setData(null);
     setError(null);
     const key = `${translation}/${bookId}/${chapter}`;
+    // Instant return from localStorage for perceived 0 delay
+    const ls = getCachedChapter(key);
+    if (ls) { setData(ls); setLoading(false); return; }
     let promise = chapterCache.get(key);
     if (!promise) {
-      promise = bibleRepository.getChapter(bookId, chapter, translation).catch((err) => {
+      promise = bibleRepository.getChapter(bookId, chapter, translation).then((ch) => { setCachedChapter(key, ch); return ch; }).catch((err) => {
         chapterCache.delete(key);
         throw err;
       });

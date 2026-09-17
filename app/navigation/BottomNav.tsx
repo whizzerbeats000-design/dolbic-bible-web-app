@@ -24,7 +24,7 @@ export function BottomNav() {
           const Icon = item.icon; const active = isActive(pathname, item.href);
           return (
             <li key={item.href} className="flex-1">
-              <Link href={item.href} aria-current={active ? 'page' : undefined} className={`flex flex-col items-center justify-center gap-1 py-2 min-h-[56px] rounded-[12px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B2E68] ${active ? 'text-[#0B2E68]' : 'text-[#94A3B8] hover:text-[#475569]'}`}>
+              <Link href={item.href} prefetch={true} aria-current={active ? 'page' : undefined} className={`flex flex-col items-center justify-center gap-1 py-2 min-h-[56px] rounded-[12px] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0B2E68] ${active ? 'text-[#0B2E68]' : 'text-[#94A3B8] hover:text-[#475569]'}`}>
                 <Icon size={22} strokeWidth={active ? 2 : 1.7} aria-hidden="true" />
                 <span className="font-sans text-[10px] font-semibold tracking-[0.04em]">{item.label}</span>
                 <span aria-hidden="true" className={`h-1 w-6 rounded-full transition-colors ${active ? 'bg-[#0B2E68]' : 'bg-transparent'}`} />

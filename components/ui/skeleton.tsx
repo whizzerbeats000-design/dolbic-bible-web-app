@@ -13,7 +13,7 @@ export function Skeleton({ className = '', lines = 1, ...rest }: SkeletonProps) 
       {Array.from({ length: lines }).map((_, i) => (
         <div
           key={i}
-          className={`skeleton mb-2 ${i === lines - 1 ? 'mb-0' : ''} ${className}`}
+          className={`skeleton animate-pulse mb-2 ${i === lines - 1 ? 'mb-0' : ''} ${className}`}
           aria-hidden="true"
         />
       ))}

@@ -10,7 +10,10 @@ import { BookOpenIcon, ChevronRightIcon, PrayerHandsIcon } from '@/components/ui
 
 function Splash() {
   const [show, setShow] = useState(true);
-  useEffect(() => { const t = setTimeout(() => setShow(false), 1400); return () => clearTimeout(t); }, []);
+  useEffect(() => {
+    const timer = setTimeout(() => setShow(false), 3000); // Enforce 3000ms for brand exposure
+    return () => clearTimeout(timer);
+  }, []);
   if (!show) return null;
   return (
     <div className="fixed inset-0 z-[100] flex flex-col bg-[#0B2E68] overflow-hidden animate-[fade-in_200ms_ease]">

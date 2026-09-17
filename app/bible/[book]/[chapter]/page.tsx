@@ -5,8 +5,8 @@ import { useRouter } from 'next/navigation';
 import dynamic from 'next/dynamic';
 import { VerseSkeleton } from '@/components/ui/skeleton';
 import { useBookList } from '@/lib/hooks/use-bible';
-const Reader = dynamic(() => import('@/components/bible/reader').then(m => m.Reader), { loading: () => <div className="max-w-[680px] mx-auto px-4 py-6"><div className="space-y-3 animate-pulse"><div className="h-4 bg-[#F1F5F9] rounded w-1/3" /><div className="h-4 bg-[#F1F5F9] rounded w-full" /><div className="h-4 bg-[#F1F5F9] rounded w-5/6" /></div></div>, ssr: false });
 import { useReaderSettings } from '@/lib/hooks/use-saved';
+const Reader = dynamic(() => import('@/components/bible/reader').then(m => m.Reader), { loading: () => <div className="max-w-[680px] mx-auto px-4 py-6"><div className="space-y-3 animate-pulse"><div className="h-4 bg-[#F1F5F9] rounded w-1/3" /><div className="h-4 bg-[#F1F5F9] rounded w-full" /><div className="h-4 bg-[#F1F5F9] rounded w-5/6" /></div></div>, ssr: false });
 import { ArrowLeftIcon, ChevronLeftIcon, ChevronRightIcon, SearchIcon, BookmarkIcon } from '@/components/ui/icons';
 import { getBookTitle } from '@/lib/fixtures/books';
 export default function ChapterPage({ params }: { params: { book: string; chapter: string } }) {
