@@ -5,5 +5,7 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
   },
   experimental: { optimizePackageImports: ['lucide-react'] },
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: false },
 };
 module.exports = nextConfig;

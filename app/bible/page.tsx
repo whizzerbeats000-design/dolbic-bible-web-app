@@ -87,7 +87,7 @@ export default function BiblePage() {
                 {grouped[testament].map((b) => (
                   <li key={b.id}>
                       <Link
-                      href={`/bible/${b.id}/1`}
+                      href={`/bible/${b.id}`}
                       className="group relative flex min-h-[56px] items-center gap-4 px-4 py-3 transition-all duration-150 hover:bg-[#F8FAFC] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#0B2E68]"
                     >
                       <span className="absolute left-0 top-1/2 h-6 w-[3px] -translate-y-1/2 rounded-r bg-[var(--color-primary)] opacity-0 transition-opacity duration-150 group-hover:opacity-100" aria-hidden="true" />
